@@ -109,6 +109,34 @@
     if (el) el.textContent = new Date().getFullYear();
   }
 
+  // ── De-obfuscate contact links (anti-scraper)
+  function setupObfuscatedContacts() {
+    var mailLinks = document.querySelectorAll('[data-mailto]');
+    for (var i = 0; i < mailLinks.length; i++) {
+      var parts = (mailLinks[i].getAttribute('data-mailto') || '').split(':');
+      if (parts.length === 2) {
+        var addr = parts[0] + '@' + parts[1];
+        mailLinks[i].setAttribute('href', 'mailto:' + addr);
+        if (mailLinks[i].dataset.fill === 'true') mailLinks[i].textContent = addr;
+      }
+    }
+    var telLinks = document.querySelectorAll('[data-tel]');
+    for (var j = 0; j < telLinks.length; j++) {
+      var num = telLinks[j].getAttribute('data-tel') || '';
+      var digits = num.replace(/[^0-9]/g, '');
+      telLinks[j].setAttribute('href', 'tel:' + digits);
+    }
+  }
+
+  // ── Trigger bar animations when in view (set --bar-w from data-pct)
+  function setupBarAnimations() {
+    var bars = document.querySelectorAll('.bar-row__fill[data-pct]');
+    for (var i = 0; i < bars.length; i++) {
+      bars[i].style.setProperty('--bar-w', bars[i].getAttribute('data-pct') + '%');
+      bars[i].style.setProperty('--bar-delay', (i * 80) + 'ms');
+    }
+  }
+
   // init
   document.addEventListener('DOMContentLoaded', function () {
     setActiveNav();
@@ -116,5 +144,7 @@
     setupContactForm();
     setFooterYear();
     setupWhatsappFab();
+    setupObfuscatedContacts();
+    setupBarAnimations();
   });
 })();
