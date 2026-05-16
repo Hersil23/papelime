@@ -321,12 +321,78 @@ body::before {
 }
 
 /* ── SIZES (2-col cards) ──────────────────────────────────────── */
-.sizes { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.sizes__card { padding: 0; overflow: hidden; }
-.sizes__card-art img { width: 100%; height: 240px; object-fit: cover; }
-.sizes__card-body { padding: 28px 36px 36px; }
-.price { display: flex; align-items: baseline; gap: 8px; margin-top: 16px; }
-.price__amount { font-family: var(--font-display); font-size: 36px; color: var(--molasses-dark); }
+.sizes { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+.sizes__card {
+  padding: 20px 20px 36px;
+  overflow: visible;
+  position: relative;
+  background: var(--paper-warm);
+  transition: transform var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease);
+}
+.sizes__card:nth-child(1) { transform: rotate(-.5deg); }
+.sizes__card:nth-child(2) { transform: rotate(.5deg); }
+.sizes__card:hover { transform: rotate(0) translateY(-6px); box-shadow: var(--shadow-3); }
+.sizes__card-art {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--paper);
+  margin-bottom: 22px;
+  box-shadow: inset 0 0 0 1px rgba(140,104,67,.08);
+}
+.sizes__card-art img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 600ms var(--ease);
+}
+.sizes__card:hover .sizes__card-art img { transform: scale(1.025); }
+.sizes__card-art::after {
+  content: attr(data-note);
+  position: absolute;
+  bottom: 14px; right: 18px;
+  font-family: var(--font-script);
+  font-size: 22px;
+  color: var(--molasses-dark);
+  background: rgba(251,247,238,.78);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 2px 12px;
+  border-radius: 999px;
+  transform: rotate(-2deg);
+  letter-spacing: .02em;
+}
+.sizes__card-body { padding: 0 10px; }
+.sizes__card-body .t-eyebrow { color: var(--molasses-dark); }
+.sizes__card-body h3 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 36px);
+  margin: 10px 0 10px;
+  letter-spacing: -.01em;
+  line-height: 1.05;
+}
+.sizes__card-body > p { color: var(--ink-soft); line-height: 1.55; margin: 0; }
+.price {
+  display: flex; align-items: baseline; gap: 10px;
+  margin-top: 22px; padding-top: 18px;
+  border-top: 1px dashed var(--paper-edge);
+}
+.price__amount {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4vw, 44px);
+  color: var(--molasses-dark);
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+.price__unit { color: var(--ink-mute); font-size: 14px; letter-spacing: .04em; }
+@media (max-width: 720px) {
+  .sizes { grid-template-columns: 1fr; gap: 32px; }
+  .sizes__card,
+  .sizes__card:nth-child(1),
+  .sizes__card:nth-child(2) { transform: none; }
+  .sizes__card:hover { transform: translateY(-4px); }
+}
 .price__unit { font-size: 14px; color: var(--ink-mute); }
 
 /* ── CTA BAND ─────────────────────────────────────────────────── */
