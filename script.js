@@ -117,7 +117,9 @@
       if (parts.length === 2) {
         var addr = parts[0] + '@' + parts[1];
         mailLinks[i].setAttribute('href', 'mailto:' + addr);
-        if (mailLinks[i].dataset.fill === 'true') mailLinks[i].textContent = addr;
+        // Replace placeholder text with the real email after JS runs
+        // (HTML source stays obfuscated against scrapers)
+        if (mailLinks[i].dataset.keep !== 'true') mailLinks[i].textContent = addr;
       }
     }
     var telLinks = document.querySelectorAll('[data-tel]');
