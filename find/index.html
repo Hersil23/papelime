@@ -126,86 +126,86 @@
   </div>
   <div class="map">
     <div class="map__inner">
-      <svg class="map__svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Hand-drawn map of Northern Virginia showing Arlington, Falls Church, Alexandria and Springfield along the Potomac River">
-        <defs>
-          <filter id="mapRough" x="-5%" y="-5%" width="110%" height="110%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="4"/>
-            <feDisplacementMap in="SourceGraphic" scale="3.2"/>
-          </filter>
-          <filter id="mapPaper">
-            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="1"/>
-            <feColorMatrix values="0 0 0 0 .55  0 0 0 0 .42  0 0 0 0 .26  0 0 0 .08 0"/>
-            <feComposite in2="SourceGraphic" operator="in"/>
-          </filter>
-        </defs>
-
-        <!-- DC / Maryland region across the river (lightly tinted, no rough filter) -->
-        <path class="map__dc" d="M 612,0 C 640,60 660,140 650,210 C 640,290 620,360 580,430 C 560,470 540,490 520,500 L 800,500 L 800,0 Z"/>
-
-        <!-- Potomac river: wavy ribbon along the east -->
-        <path class="map__river" d="M 590,0 C 622,50 645,110 640,180 C 632,250 612,320 580,390 C 562,430 540,470 520,500 L 558,500 C 580,470 602,430 622,390 C 660,310 678,230 670,150 C 664,90 645,30 626,0 Z"/>
-
-        <!-- Land (Northern Virginia / west side of Potomac) -->
-        <path class="map__land" d="M 32,80 C 110,58 220,82 340,68 C 460,55 540,68 588,92 C 598,160 618,225 596,295 C 576,365 538,422 478,468 C 380,498 280,492 198,482 C 118,472 58,448 36,398 C 22,328 26,200 32,80 Z"/>
-
-        <!-- Distribution route — dashed loop touching all 4 cities -->
-        <path class="map__route" d="M 540,128 C 488,142 446,170 414,196 C 388,256 384,302 396,346 C 462,330 506,308 552,288 C 580,232 576,178 540,128 Z"/>
-
-        <!-- Decorative sugarcane bottom-left -->
-        <g class="map__cane" transform="translate(78, 432) rotate(-22)">
-          <line x1="0" y1="0" x2="0" y2="-58"/>
-          <line x1="0" y1="-14" x2="-12" y2="-14"/>
-          <line x1="0" y1="-28" x2="-12" y2="-28"/>
-          <line x1="0" y1="-42" x2="-12" y2="-42"/>
-          <line x1="0" y1="-56" x2="-12" y2="-56"/>
-          <path d="M 0,-58 C -14,-66 -16,-78 -8,-82" fill="none"/>
-          <path d="M 0,-58 C 14,-64 18,-74 10,-80" fill="none"/>
+      <svg class="map__svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Editorial map of Northern Virginia showing Arlington, Falls Church, Alexandria and Springfield along the Potomac River">
+        <!-- Reference grid (very subtle) -->
+        <g class="map__grid">
+          <line x1="0" y1="100" x2="800" y2="100"/>
+          <line x1="0" y1="200" x2="800" y2="200"/>
+          <line x1="0" y1="300" x2="800" y2="300"/>
+          <line x1="0" y1="400" x2="800" y2="400"/>
+          <line x1="100" y1="0" x2="100" y2="500"/>
+          <line x1="200" y1="0" x2="200" y2="500"/>
+          <line x1="300" y1="0" x2="300" y2="500"/>
+          <line x1="400" y1="0" x2="400" y2="500"/>
+          <line x1="500" y1="0" x2="500" y2="500"/>
+          <line x1="600" y1="0" x2="600" y2="500"/>
+          <line x1="700" y1="0" x2="700" y2="500"/>
         </g>
 
-        <!-- Compass rose top-left -->
-        <g class="map__compass" transform="translate(86, 86)">
-          <circle r="26"/>
-          <circle r="20" stroke-dasharray="2 3"/>
-          <path class="map__compass-needle" d="M 0,-24 L 5,0 L 0,24 L -5,0 Z"/>
+        <!-- DC / Maryland region across the river (very subtle fill) -->
+        <path class="map__dc" d="M 612,0 C 640,80 658,180 644,280 C 628,370 596,440 558,500 L 800,500 L 800,0 Z"/>
+
+        <!-- Potomac River — clean stroke + soft fill -->
+        <path class="map__river-fill" d="M 590,0 C 622,60 645,150 638,240 C 626,330 596,410 558,500 L 590,500 C 624,420 654,340 666,250 C 674,160 658,70 622,0 Z"/>
+        <path class="map__river-line" d="M 606,0 C 634,60 654,150 642,240 C 630,330 600,410 562,500"/>
+
+        <!-- Distribution route — clean polyline through the four points -->
+        <path class="map__route" d="M 528,128 L 408,196 L 396,346 L 552,290 Z"/>
+
+        <!-- DC label across the river -->
+        <text class="map__faraway" x="720" y="68" text-anchor="middle">WASHINGTON, D.C.</text>
+        <text class="map__faraway map__faraway--sm" x="720" y="88" text-anchor="middle">— across the river —</text>
+
+        <!-- Potomac label -->
+        <text class="map__river-label" x="688" y="248" text-anchor="middle" transform="rotate(78 688 248)">POTOMAC&#160;&#160;&#160;RIVER</text>
+
+        <!-- Compass top-left -->
+        <g class="map__compass" transform="translate(74, 78)">
+          <line x1="0" y1="-22" x2="0" y2="22"/>
+          <line x1="-22" y1="0" x2="22" y2="0"/>
+          <path class="map__compass-arrow" d="M 0,-26 L -5,-14 L 5,-14 Z"/>
           <text class="map__compass-text" y="-32" text-anchor="middle">N</text>
         </g>
 
-        <!-- Far-side labels: DC + Maryland (lightly placed) -->
-        <text class="map__faraway" x="734" y="52" text-anchor="end" transform="rotate(-8 734 52)">Washington, D.C.</text>
-        <text class="map__faraway" x="772" y="328" text-anchor="middle" transform="rotate(-90 772 328)">Maryland →</text>
-
-        <!-- River label following the curve -->
-        <text class="map__river-label" x="618" y="240" transform="rotate(78 618 240)">Potomac River</text>
-
-        <!-- Cities -->
+        <!-- Cities — numbered editorial pins -->
         <g class="map__city">
-          <circle cx="540" cy="128" r="8" class="map__city-dot"/>
-          <circle cx="540" cy="128" r="3.2" class="map__city-inner"/>
-          <text class="map__city-label" x="556" y="124" transform="rotate(-2 556 124)">Arlington</text>
+          <line class="map__city-tick" x1="528" y1="128" x2="566" y2="128"/>
+          <circle class="map__city-pin" cx="528" cy="128" r="13"/>
+          <text class="map__city-num" x="528" y="133" text-anchor="middle">01</text>
+          <text class="map__city-name" x="572" y="124">ARLINGTON</text>
+          <text class="map__city-meta" x="572" y="140">7 locations</text>
         </g>
         <g class="map__city">
-          <circle cx="414" cy="196" r="8" class="map__city-dot"/>
-          <circle cx="414" cy="196" r="3.2" class="map__city-inner"/>
-          <text class="map__city-label" x="288" y="192" transform="rotate(-2 288 192)">Falls Church</text>
+          <line class="map__city-tick" x1="408" y1="196" x2="302" y2="196"/>
+          <circle class="map__city-pin" cx="408" cy="196" r="13"/>
+          <text class="map__city-num" x="408" y="201" text-anchor="middle">02</text>
+          <text class="map__city-name" x="296" y="192" text-anchor="end">FALLS CHURCH</text>
+          <text class="map__city-meta" x="296" y="208" text-anchor="end">8 locations</text>
         </g>
         <g class="map__city">
-          <circle cx="552" cy="288" r="8" class="map__city-dot"/>
-          <circle cx="552" cy="288" r="3.2" class="map__city-inner"/>
-          <text class="map__city-label" x="568" y="296" transform="rotate(2 568 296)">Alexandria</text>
+          <line class="map__city-tick" x1="552" y1="290" x2="590" y2="290"/>
+          <circle class="map__city-pin" cx="552" cy="290" r="13"/>
+          <text class="map__city-num" x="552" y="295" text-anchor="middle">03</text>
+          <text class="map__city-name" x="596" y="286">ALEXANDRIA</text>
+          <text class="map__city-meta" x="596" y="302">9 locations</text>
         </g>
         <g class="map__city">
-          <circle cx="396" cy="346" r="8" class="map__city-dot"/>
-          <circle cx="396" cy="346" r="3.2" class="map__city-inner"/>
-          <text class="map__city-label" x="270" y="368" transform="rotate(-3 270 368)">Springfield</text>
+          <line class="map__city-tick" x1="396" y1="346" x2="290" y2="346"/>
+          <circle class="map__city-pin" cx="396" cy="346" r="13"/>
+          <text class="map__city-num" x="396" y="351" text-anchor="middle">04</text>
+          <text class="map__city-name" x="284" y="342" text-anchor="end">SPRINGFIELD</text>
+          <text class="map__city-meta" x="284" y="358" text-anchor="end">11 locations</text>
         </g>
 
         <!-- Scale bar bottom-right -->
-        <g class="map__scale" transform="translate(620, 458)">
-          <line x1="0" y1="0" x2="100" y2="0"/>
+        <g class="map__scale" transform="translate(40, 460)">
+          <line x1="0" y1="0" x2="120" y2="0"/>
           <line x1="0" y1="-5" x2="0" y2="5"/>
-          <line x1="50" y1="-3" x2="50" y2="3"/>
-          <line x1="100" y1="-5" x2="100" y2="5"/>
-          <text x="50" y="20" text-anchor="middle">5 miles</text>
+          <line x1="60" y1="-4" x2="60" y2="4"/>
+          <line x1="120" y1="-5" x2="120" y2="5"/>
+          <text x="0" y="22">0</text>
+          <text x="60" y="22" text-anchor="middle">2.5</text>
+          <text x="120" y="22" text-anchor="end">5 MI</text>
         </g>
       </svg>
       <span class="map__caption">Northern Virginia · founding distribution region</span>
