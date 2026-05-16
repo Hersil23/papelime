@@ -456,18 +456,79 @@ body::before {
 .find__num { font-family: var(--font-display); font-size: 56px; line-height: 1; color: var(--papelon-dark); }
 .map { max-width: 1320px; margin: 32px auto 0; padding: 0 32px; }
 .map__inner {
-  position: relative; height: 380px;
+  position: relative;
+  aspect-ratio: 8 / 5;
   background:
-    radial-gradient(ellipse at 30% 40%, rgba(177,208,133,.30) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 60%, rgba(35,134,123,.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 22% 28%, rgba(220,190,141,.18), transparent 55%),
+    radial-gradient(ellipse at 80% 75%, rgba(168,213,208,.20), transparent 55%),
     var(--paper-warm);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--ink-faint);
+  border: 1px solid var(--paper-edge);
+  box-shadow: var(--shadow-1);
   overflow: hidden;
 }
-.map__pin { position: absolute; display: flex; align-items: center; gap: 10px; transform: translate(-50%, -50%); }
-.map__dot { width: 14px; height: 14px; background: var(--papelon); border: 2px solid var(--paper); border-radius: 50%; box-shadow: var(--shadow-2); }
-.map__caption { position: absolute; bottom: 16px; right: 24px; color: var(--ink-mute); font-style: italic; }
+.map__inner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.42 0 0 0 0 0.26 0 0 0 0.10 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+  opacity: .55;
+  pointer-events: none;
+}
+.map__svg { width: 100%; height: 100%; display: block; position: relative; z-index: 1; }
+.map__caption {
+  position: absolute; bottom: 14px; right: 22px;
+  color: var(--ink-mute); font-style: italic; font-size: 12px;
+  z-index: 2;
+}
+
+/* SVG geography */
+.map__dc { fill: rgba(189,176,154,.16); }
+.map__river {
+  fill: rgba(168,213,208,.55);
+  stroke: var(--cane-teal-dark); stroke-width: 1.4; stroke-linejoin: round;
+  filter: url(#mapRough);
+}
+.map__land {
+  fill: rgba(220,190,141,.22);
+  stroke: var(--molasses-dark); stroke-width: 1.5; stroke-linejoin: round;
+  filter: url(#mapRough);
+}
+.map__route {
+  fill: none;
+  stroke: var(--papelon-dark); stroke-width: 2.2;
+  stroke-dasharray: 3 7; stroke-linecap: round;
+  opacity: 0;
+  animation: mapRouteIn 1.2s var(--ease) 1s forwards;
+  filter: url(#mapRough);
+}
+@keyframes mapRouteIn { from { opacity: 0; } to { opacity: 1; } }
+.map__cane { stroke: var(--lime-dark); stroke-width: 2; stroke-linecap: round; opacity: .55; fill: none; }
+.map__compass { stroke: var(--molasses-dark); fill: none; stroke-width: 1; }
+.map__compass-needle { fill: var(--papelon-dark); stroke: var(--papelon-dark); stroke-width: .5; }
+.map__compass-text { font-family: var(--font-display); font-size: 12px; fill: var(--molasses-dark); stroke: none; font-style: italic; }
+.map__scale { stroke: var(--molasses-dark); stroke-width: 1.5; stroke-linecap: round; fill: none; }
+.map__scale text { font-family: var(--font-sans); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; fill: var(--ink-mute); stroke: none; }
+.map__faraway { font-family: var(--font-display); font-size: 13px; fill: var(--ink-mute); font-style: italic; }
+.map__river-label { font-family: var(--font-script); font-size: 20px; fill: var(--cane-teal-dark); opacity: .75; }
+.map__city { cursor: default; }
+.map__city-dot { fill: var(--paper-warm); stroke: var(--papelon-dark); stroke-width: 2.2; transition: r .25s var(--ease); }
+.map__city-inner { fill: var(--papelon-dark); transition: r .25s var(--ease); }
+.map__city-label { font-family: var(--font-script); font-size: 24px; fill: var(--molasses-dark); }
+.map__city { opacity: 0; animation: mapCityIn .6s var(--ease) forwards; }
+.map__city:nth-of-type(1) { animation-delay: 1.4s; }
+.map__city:nth-of-type(2) { animation-delay: 1.6s; }
+.map__city:nth-of-type(3) { animation-delay: 1.8s; }
+.map__city:nth-of-type(4) { animation-delay: 2.0s; }
+@keyframes mapCityIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.map__city:hover .map__city-dot { r: 11; }
+.map__city:hover .map__city-inner { r: 5; }
+
+@media (max-width: 640px) {
+  .map__inner { aspect-ratio: 4 / 5; }
+  .map__city-label { font-size: 30px; }
+  .map__river-label { font-size: 24px; }
+}
 
 /* ── CONTACT ──────────────────────────────────────────────────── */
 .contact { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; max-width: 1100px; margin: 0 auto 80px; padding: 0 32px; }
