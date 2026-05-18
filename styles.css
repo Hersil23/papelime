@@ -4,7 +4,17 @@
  * No depende de React ni de ningún framework.
  * ================================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;700&family=Caveat+Brush&family=DM+Sans:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap');
+/* ── SELF-HOSTED FONTS (no external CDN, privacy-friendly) ── */
+@font-face { font-family: 'Caveat';            font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/caveat-400.woff2') format('woff2'); }
+@font-face { font-family: 'Caveat';            font-style: normal; font-weight: 500; font-display: swap; src: url('assets/fonts/caveat-500.woff2') format('woff2'); }
+@font-face { font-family: 'Caveat';            font-style: normal; font-weight: 700; font-display: swap; src: url('assets/fonts/caveat-700.woff2') format('woff2'); }
+@font-face { font-family: 'Caveat Brush';      font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/caveat-brush-400.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans';           font-style: normal; font-weight: 300; font-display: swap; src: url('assets/fonts/dm-sans-300.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans';           font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/dm-sans-400.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans';           font-style: normal; font-weight: 500; font-display: swap; src: url('assets/fonts/dm-sans-500.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans';           font-style: normal; font-weight: 700; font-display: swap; src: url('assets/fonts/dm-sans-700.woff2') format('woff2'); }
+@font-face { font-family: 'DM Serif Display';  font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/dm-serif-display-400.woff2') format('woff2'); }
+@font-face { font-family: 'DM Serif Display';  font-style: italic; font-weight: 400; font-display: swap; src: url('assets/fonts/dm-serif-display-400-italic.woff2') format('woff2'); }
 
 /* ── TOKENS ─────────────────────────────────────────────────────── */
 :root {

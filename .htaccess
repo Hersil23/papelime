@@ -29,18 +29,22 @@
   # Referrer policy — only send origin on cross-origin requests
   Header set Referrer-Policy "strict-origin-when-cross-origin"
 
-  # Disable invasive browser features by default
-  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=()"
-
   # XSS protection (legacy but harmless on modern browsers)
   Header set X-XSS-Protection "1; mode=block"
 
-  # CORS — same-origin only for resources
+  # Cross-Origin isolation — same-origin only for resources
   Header set Cross-Origin-Opener-Policy "same-origin"
+  Header set Cross-Origin-Resource-Policy "same-origin"
+  Header set Cross-Origin-Embedder-Policy "credentialless"
+
+  # No FLoC / interest cohort tracking
+  Header set Permissions-Policy "interest-cohort=(), geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), browsing-topics=()"
 
   # Don't leak server signature
   Header unset X-Powered-By
   Header always unset X-Powered-By
+  Header unset Server
+  Header always unset Server
 </IfModule>
 
 # ── Compression ─────────────────────────────────────────────────
