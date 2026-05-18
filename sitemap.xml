@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://papelime.com/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://papelime.com/assets/hero-duo.webp</image:loc>
+      <image:title>Papelime — 1 gallon jug, 12 oz bottle, glass with ice, lime and sugar cane</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://papelime.com/story/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://papelime.com/product/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://papelime.com/assets/bottle-and-jug.webp</image:loc>
+      <image:title>Papelime 12 oz bottle and 1 gallon jug</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://papelime.com/assets/bottle-12oz.webp</image:loc>
+      <image:title>Papelime 12 oz bottle</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://papelime.com/assets/jug-1gal.webp</image:loc>
+      <image:title>Papelime 1 gallon jug</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://papelime.com/market/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://papelime.com/sustainability/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://papelime.com/find/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://papelime.com/contact/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
