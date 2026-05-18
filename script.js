@@ -36,7 +36,7 @@
   }
 
   // ── WhatsApp config
-  var WA_NUMBER = '17039363160'; // +1 703-936-3160 (Northern Virginia)
+  var WA_NUMBER = '15712539605'; // +1 571-253-9605 (Northern Virginia)
   var WA_BASE   = 'https://wa.me/' + WA_NUMBER + '?text=';
 
   // ── Form de contacto → abre WhatsApp con el mensaje prellenado
